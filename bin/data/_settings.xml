@@ -1,0 +1,38 @@
+<controls>
+    <SliderFloat_Speed>
+        <name>Speed</name>
+        <value>1.000000</value>
+    </SliderFloat_Speed>
+    <Button_Open_Picture>
+        <name>Open Picture</name>
+        <value>0</value>
+    </Button_Open_Picture>
+    <Button_Open_Music>
+        <name>Open Music</name>
+        <value>0</value>
+    </Button_Open_Music>
+    <Toggle_Invert>
+        <name>Invert</name>
+        <value>0</value>
+    </Toggle_Invert>
+    <Toggle_Contrast>
+        <name>Contrast</name>
+        <value>0</value>
+    </Toggle_Contrast>
+    <SliderInt_Spectrum_Max_HZ>
+        <name>Spectrum Max HZ</name>
+        <value>3513</value>
+    </SliderInt_Spectrum_Max_HZ>
+    <SliderInt_Spectrum_Min_HZ>
+        <name>Spectrum Min HZ</name>
+        <value>1</value>
+    </SliderInt_Spectrum_Min_HZ>
+    <SliderFloat_LINE>
+        <name>LINE</name>
+        <value>1.000000</value>
+    </SliderFloat_LINE>
+    <Toggle_reset>
+        <name>reset</name>
+        <value>0</value>
+    </Toggle_reset>
+</controls>
