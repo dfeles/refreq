@@ -51,7 +51,7 @@ void mainApp::setup(){
 	maxHertz = 3513;
 	
 	spectrum = new SpectrumDrawer( 1, maxHertz );
-	spectrum->loadImageSpectrum("main.jpg");
+	spectrum->loadImageSpectrum("data/main.jpg");
 	
 	playerHead = new PlayerHead();
 	
