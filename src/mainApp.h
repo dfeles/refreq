@@ -4,10 +4,8 @@
 
 #include "ofMain.h"
 #include "ofUtils.h"
-#include "ofAddons.h"
 #include "SpectrumDrawer.h"
 #include "PlayerHead.h"
-#include "ofxFileDialogOSX.h"
 #include "ofSoundStream2.h"
 #include "fft.h"
 

@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/99/trunk/ofxMSAInteractiveObject/example/src
+END
+testApp.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/99/trunk/ofxMSAInteractiveObject/example/src/testApp.cpp
+END
+MyTestObject.h
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/99/trunk/ofxMSAInteractiveObject/example/src/MyTestObject.h
+END
+main.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/99/trunk/ofxMSAInteractiveObject/example/src/main.cpp
+END
+testApp.h
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/99/trunk/ofxMSAInteractiveObject/example/src/testApp.h
+END

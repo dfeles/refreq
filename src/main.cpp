@@ -3,7 +3,7 @@
 #include "ofAppGlutWindow.h"
 
 //========================================================================
-int main( ){
+int main(){
 
     ofAppGlutWindow window;
 	window.setGlutDisplayString("rgba double samples>=4 depth");

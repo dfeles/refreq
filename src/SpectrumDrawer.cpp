@@ -93,7 +93,7 @@ void SpectrumDrawer::update(){
 				
 				//cout << getPixel(x, y);
 				c/=255.0;
-				c=pow(c,.5);
+				c=sqrt(c);
 				//	ofSetColor(ertek, pow(ertek/255.0,3)*255.0, pow(ertek/255.0,5)*255.0,255);
 				
 				glColor3f(c,c,c);
@@ -253,7 +253,7 @@ void SpectrumDrawer::reloadTexture(int mode){
 				for (int o = 0; o < 3; o++) {
 					float k;
 					k=pixels[j][i];
-					k=pow(float(k/255.0),.5)*255.0;
+					k=sqrt(float(k/255.0))*255.0;
 					if (k>255) {
 						k=255;
 					}

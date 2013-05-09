@@ -8,7 +8,7 @@
 
 
 #include "mainApp.h"
-#include "ofxVectorMath.h"
+#include "ofVectorMath.h"
 #include "ofxSimpleGuiToo.h"
 
 bool	firstLoaded=false;
@@ -102,7 +102,7 @@ void mainApp::update(){
 //--------------------------------------------------------------
 void mainApp::draw(){
 	
-	if(demoSound.bLoadedOk){
+	if(demoSound.isLoaded()){
 		if(firstLoaded){
 			firstLoaded=false;
 			spectrum->clear();
@@ -249,9 +249,12 @@ void mainApp::openMusicFile(){
 	
 	// openFile(string& URL) returns 1 if a file was picked
 	// returns 0 when something went wrong or the user pressed 'cancel'
-	int response = ofxFileDialogOSX::openFile(URL);
-	
-	if(response){
+	//int response = ofxFileDialogOSX::openFile(URL);
+    ofFileDialogResult result = ofSystemLoadDialog("Load Music", false, "");
+    
+    
+	if(result.bSuccess){
+        URL = result.filePath;
 		// now you can use the URL 
 		output = "URL to open: \n "+URL;
 		string extension;
@@ -259,6 +262,7 @@ void mainApp::openMusicFile(){
 		{
 			extension+=URL[i];
 		}
+        
 		//majd kell ide extension vizsgalatot irni
 		loadMusic(URL);
 	}else {
@@ -272,10 +276,12 @@ void mainApp::openFile(){
 	
 	// openFile(string& URL) returns 1 if a file was picked
 	// returns 0 when something went wrong or the user pressed 'cancel'
-	int response = ofxFileDialogOSX::openFile(URL);
-	
-	if(response){
-		// now you can use the URL 
+	ofFileDialogResult result = ofSystemLoadDialog("Load Music", false, "");
+    
+    
+	if(result.bSuccess){
+		// now you can use the URL
+        URL = result.filePath;
 		output = "URL to open: \n "+URL;
 		string extension;
 		for(int i = URL.length()-3; i < URL.length(); i++)

@@ -39,7 +39,7 @@ int receiveAudioBufferAndCallSimpleApp(void *outputBuffer, void *inputBuffer, un
 			audioEventArgs.buffer = fPtrIn;
 			audioEventArgs.bufferSize = bufferSize;
 			audioEventArgs.nChannels = nInputChannels;
-			ofNotifyEvent( ofEvents.audioReceived, audioEventArgs );
+			ofNotifyEvent( ofEvents().audioReceived, audioEventArgs );
 		#endif
 	}
 
@@ -50,7 +50,7 @@ int receiveAudioBufferAndCallSimpleApp(void *outputBuffer, void *inputBuffer, un
 			audioEventArgs.buffer = fPtrOut;
 			audioEventArgs.bufferSize = bufferSize;
 			audioEventArgs.nChannels = nOutputChannels;
-			ofNotifyEvent( ofEvents.audioRequested, audioEventArgs );
+			ofNotifyEvent( ofEvents().audioRequested, audioEventArgs );
 		#endif
 	}
 

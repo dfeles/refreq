@@ -21,10 +21,10 @@ PlayerHead::PlayerHead(){
 	dragging2=false;
 	
 	
-	ofAddListener(ofEvents.mousePressed, this, &PlayerHead::mousePressed);
+	ofAddListener(ofEvents().mousePressed, this, &PlayerHead::mousePressed);
 	//ofAddListener(ofEvents.mouseMoved, this, &PlayerHead::mouseMoved);
-	ofAddListener(ofEvents.mouseDragged, this, &PlayerHead::mouseDragged);
-	ofAddListener(ofEvents.mouseReleased, this, &PlayerHead::mouseReleased);
+	ofAddListener(ofEvents().mouseDragged, this, &PlayerHead::mouseDragged);
+	ofAddListener(ofEvents().mouseReleased, this, &PlayerHead::mouseReleased);
 }
 
 
@@ -111,7 +111,7 @@ int fmin (int a,int b){
 	}	
 }
 int PlayerHead::distance(int _x1, int _x2, int _y1, int _y2){
-	return sqrt(pow(_x2-_x1,2) + pow(_y2-_y1,2));
+	return sqrt(pow(_x2-_x1,2.0) + pow(_y2-_y1,2.0));
 }
 
 void PlayerHead::mouseReleased(ofMouseEventArgs &e) {
