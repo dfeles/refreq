@@ -25,7 +25,7 @@ SpectrumDrawer::SpectrumDrawer(int _minHz, int _maxHz){
 	loadedMusicPlaying=false;
 	
 	ofDisableDataPath();
-	hertZ.loadFont("din.ttf", 10);
+	hertZ.loadFont("../Resources/din.ttf", 10);
 	
 	//invert = false;
 }

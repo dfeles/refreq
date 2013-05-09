@@ -32,6 +32,9 @@
 		C73659FE173BF3CF00A7BF20 /* ofxSimpleGuiPage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C73659E9173BF3CF00A7BF20 /* ofxSimpleGuiPage.cpp */; };
 		C73659FF173BF3CF00A7BF20 /* ofxSimpleGuiToo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C73659EB173BF3CF00A7BF20 /* ofxSimpleGuiToo.cpp */; };
 		C7365A00173BF3CF00A7BF20 /* ofxSimpleGuiValueControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C73659ED173BF3CF00A7BF20 /* ofxSimpleGuiValueControl.cpp */; };
+		C7365A3E173BF9C600A7BF20 /* main.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C7365A12173BF44B00A7BF20 /* main.jpg */; };
+		C7365A3F173BFCCB00A7BF20 /* din.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C7365A0A173BF44B00A7BF20 /* din.ttf */; };
+		C7365A41173BFEC500A7BF20 /* Window.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7365A40173BFEC500A7BF20 /* Window.xib */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
 		E45BE97C0E8CC7DD009D7055 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9720E8CC7DD009D7055 /* ApplicationServices.framework */; };
@@ -175,6 +178,7 @@
 		C7365A1D173BF44B00A7BF20 /* valami.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = valami.png; sourceTree = "<group>"; };
 		C7365A1E173BF44B00A7BF20 /* refreq.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; path = refreq.app; sourceTree = "<group>"; };
 		C7365A1F173BF44B00A7BF20 /* refreqDebug.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; path = refreqDebug.app; sourceTree = "<group>"; };
+		C7365A40173BFEC500A7BF20 /* Window.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Window.xib; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../of_v0.7.4_osx_release/libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
 		E45BE9720E8CC7DD009D7055 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = /System/Library/Frameworks/ApplicationServices.framework; sourceTree = "<absolute>"; };
@@ -491,6 +495,7 @@
 		E4B69B4A0A3A1720003C02F2 = {
 			isa = PBXGroup;
 			children = (
+				C7365A40173BFEC500A7BF20 /* Window.xib */,
 				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
 				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
 				C7365A01173BF44B00A7BF20 /* bin */,
@@ -538,6 +543,7 @@
 				E4B69B590A3A1756003C02F2 /* Frameworks */,
 				E4B6FFFD0C3F9AB9008CF71C /* ShellScript */,
 				E4C2427710CC5ABF004149E2 /* CopyFiles */,
+				C7365A3D173BF9BB00A7BF20 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -589,6 +595,19 @@
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C7365A3D173BF9BB00A7BF20 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C7365A3E173BF9C600A7BF20 /* main.jpg in Resources */,
+				C7365A3F173BFCCB00A7BF20 /* din.ttf in Resources */,
+				C7365A41173BFEC500A7BF20 /* Window.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		E4B6FFFD0C3F9AB9008CF71C /* ShellScript */ = {
