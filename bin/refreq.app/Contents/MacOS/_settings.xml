@@ -21,7 +21,7 @@
     </Toggle_Contrast>
     <SliderInt_Spectrum_Max_HZ>
         <name>Spectrum Max HZ</name>
-        <value>3513</value>
+        <value>4271</value>
     </SliderInt_Spectrum_Max_HZ>
     <SliderInt_Spectrum_Min_HZ>
         <name>Spectrum Min HZ</name>
@@ -29,7 +29,7 @@
     </SliderInt_Spectrum_Min_HZ>
     <SliderFloat_LINE>
         <name>LINE</name>
-        <value>3.000000000</value>
+        <value>0.000000000</value>
     </SliderFloat_LINE>
     <Toggle_reset>
         <name>reset</name>
