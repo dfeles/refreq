@@ -8,6 +8,8 @@
 #include "PlayerHead.h"
 #include "ofSoundStream2.h"
 #include "fft.h"
+#include "ofxUI.h"
+#include <string.h>
 
 #define BUFFER_SIZE 8192
 
@@ -27,10 +29,16 @@ class mainApp : public ofBaseApp{
 	 */
 public:
 	~mainApp();/* deconsructor is very useful */
+    
+    //basic functions
+    
 	void setup();
 	void update();
 	void draw();
+    void exit();
 	
+    //events
+    
 	void keyPressed  (int key);
 	void keyReleased(int key);
 	void mouseMoved(int x, int y );
@@ -38,7 +46,10 @@ public:
 	void mousePressed(int x, int y, int button);
 	void mouseReleased(int x, int y, int button);
 	void windowResized(int w, int h);
-	
+    
+    //init
+    void defineGui();
+    
 	void audioRequested 	(float * input, int bufferSize, int nChannels); /* output method */
 	void audioReceived 	(float * input, int bufferSize, int nChannels); /* input method */
 	
@@ -46,7 +57,10 @@ public:
 	
 	void openFile();
 	void openMusicFile();
-	string output;
+    
+    void guiEvent(ofxUIEventArgs &e);
+	
+    string output;
 	
 	
 	//music player
@@ -98,6 +112,7 @@ public:
 	
 	SpectrumDrawer* spectrum;
 	PlayerHead* playerHead;
+    ofxUICanvas *gui;
 };
 
 #endif

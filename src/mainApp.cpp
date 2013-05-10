@@ -9,7 +9,8 @@
 
 #include "mainApp.h"
 #include "ofVectorMath.h"
-#include "ofxSimpleGuiToo.h"
+
+#include "ofxUI.h"
 
 bool	firstLoaded=false;
 
@@ -17,8 +18,6 @@ int		myInt1;
 
 float	line = 0.5;
 
-bool	openf = false;
-bool	openm = false;
 bool	reset = false;
 
 float	myColors[4];
@@ -60,22 +59,10 @@ void mainApp::setup(){
 	recording = false;
 	
 	
-	//gui
-	gui.addSlider("Speed", spectrum->speed, 0.0, 20.0);
-	gui.addButton("Open Picture", openf);
-	gui.addButton("Open Music", openm);
-	gui.addToggle("Invert", spectrum->invert);
-	gui.addToggle("Contrast", spectrum->square);
-	gui.addSlider("Spectrum Max HZ", spectrum->maxHz,300.0, 5000.0);
-	gui.addSlider("Spectrum Min HZ", spectrum->minHz,1.0, 100.0);
-	gui.addSlider("LINE", line = 3.0,0.0, 20.0);
-	
-	
-	gui.addToggle("reset", reset);
-	//	gui.addSlider("Spectrum Min HZ", spectrum->minHz,0.1, 100.0);
-	
-	gui.show();
-	
+    
+    mainApp::defineGui();
+    
+     
 	//microphone
 	left = new float[BUFFER_SIZE];
 	right = new float[BUFFER_SIZE];
@@ -123,15 +110,6 @@ void mainApp::draw(){
 		 
 	}
 	
-	if(openf){
-		openFile();
-		openf=false;
-	}
-	if(openm){
-		openMusicFile();
-		openf=false;
-	}
-	
 	if(reset){
 		spectrum->speed = 1;
 		spectrum->maxHz = maxHertz;
@@ -171,7 +149,6 @@ void mainApp::draw(){
 	
 	
 	float width = (float)(ofGetWidth()) / bufferSize;
-	gui.draw();
 
 }
 
@@ -275,7 +252,7 @@ void mainApp::openFile(){
 	
 	// openFile(string& URL) returns 1 if a file was picked
 	// returns 0 when something went wrong or the user pressed 'cancel'
-	ofFileDialogResult result = ofSystemLoadDialog("Load Music", false, "");
+	ofFileDialogResult result = ofSystemLoadDialog("Open File", false, "");
     
     
 	if(result.bSuccess){
@@ -287,8 +264,11 @@ void mainApp::openFile(){
 		{
 			extension+=URL[i];
 		}
-		//majd kell ide extension vizsgalatot irni
-		spectrum->loadImageSpectrum(URL);
+        if (extension == "mp3" or extension == "wav"){
+            loadMusic(URL);
+        }else{
+            spectrum->loadImageSpectrum(URL);
+        }
 	}else {
 		output = "OPEN canceled. ";
 	}
@@ -354,6 +334,54 @@ void mainApp::keyPressed(int key)
     }
 	
 	
+}
+/*
+ gui.addSlider("Speed", spectrum->speed, 0.0, 20.0);
+ gui.addButton("Open Picture", openf);
+ gui.addButton("Open Music", openm);
+ gui.addToggle("Invert", spectrum->invert);
+ gui.addToggle("Contrast", spectrum->square);
+ gui.addSlider("Spectrum Max HZ", spectrum->maxHz,300.0, 5000.0);
+ gui.addSlider("Spectrum Min HZ", spectrum->minHz,1.0, 100.0);
+ gui.addSlider("LINE", line = 3.0,0.0, 20.0);
+ 
+ 
+ gui.addToggle("reset", reset);
+ //	gui.addSlider("Spectrum Min HZ", spectrum->minHz,0.1, 100.0);
+ 
+ gui.show();
+ */
+
+void mainApp::defineGui()
+{
+    gui = new ofxUICanvas(10,585,780,100);
+    gui->setTheme(OFX_UI_THEME_REFREQ);
+    gui->addWidgetDown(new ofxUILabel("refreq 2.0", OFX_UI_FONT_LARGE));
+    gui->addImageButton("Open", "../Resources/open.png", false, 57, 25);
+    gui->addSpacer();
+    gui->addWidgetDown(new ofxUISlider(600,10,-5.0,10.0,1.0,"Speed"));
+    ofAddListener(gui->newGUIEvent, this, &mainApp::guiEvent);
+    gui->loadSettings("GUI/guiSettings.xml");
+}
+void mainApp::guiEvent(ofxUIEventArgs &e)
+{
+    string name = e.widget->getName();
+    
+    if(name == "Speed")
+    {
+        ofxUISlider *slider = (ofxUISlider *) e.widget;
+        spectrum->speed = slider->getScaledValue();
+    }
+    if(name == "Open")
+    {
+        openFile();
+    }
+}
+
+void mainApp::exit()
+{
+	spectrum->pause();
+    delete gui;
 }
 
 //--------------------------------------------------------------
