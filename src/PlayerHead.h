@@ -24,10 +24,16 @@ public:
 	vector< pair <float,float > > getPoints(int bit);
 	
 	void update();
+    /*
 	void mouseMoved(ofMouseEventArgs &e);
 	void mousePressed(ofMouseEventArgs &e);	
 	void mouseDragged(ofMouseEventArgs &e);	
 	void mouseReleased(ofMouseEventArgs &e);
+     */
+    void mouseMoved(int x, int y );
+	void mouseDragged(int x, int y, int button);
+	void mousePressed(int x, int y, int button);
+	void mouseReleased(int x, int y, int button);
 
 private:
 	bool dragging1;

@@ -1,5 +1,4 @@
-#ifndef _TEST_APP
-#define _TEST_APP
+#pragma once
 
 
 #include "ofMain.h"
@@ -10,6 +9,7 @@
 #include "fft.h"
 #include "ofxUI.h"
 #include <string.h>
+#include "ofxNSWindowApp.h"
 
 #define BUFFER_SIZE 8192
 
@@ -19,7 +19,7 @@
 
 //BIT defines the value, the many frequency, we will count 
 
-class mainApp : public ofBaseApp{
+class mainApp : public ofxNSWindowApp{
 	/*
 	 enum
 	 {
@@ -28,8 +28,7 @@ class mainApp : public ofBaseApp{
 	 };
 	 */
 public:
-	~mainApp();/* deconsructor is very useful */
-    
+    mainApp() {}
     //basic functions
     
 	void setup();
@@ -114,5 +113,3 @@ public:
 	PlayerHead* playerHead;
     ofxUICanvas *gui;
 };
-
-#endif

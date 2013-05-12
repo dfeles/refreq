@@ -32,5 +32,9 @@
 	<string>0460</string>
 	<key>DTXcodeBuild</key>
 	<string>4H127</string>
+	<key>NSMainNibFile</key>
+	<string>MainMenu</string>
+	<key>NSPrincipalClass</key>
+	<string>NSApplication</string>
 </dict>
 </plist>
