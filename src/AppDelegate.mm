@@ -7,7 +7,7 @@
 - (void) applicationDidFinishLaunching: (NSNotification*) notification {
 	
 	//simple way...
-	ofxNSWindower::instance()->addWindow(new mainApp());
+	ofxNSWindower::instance()->addWindow(new mainApp(), "refreq", NSTexturedBackgroundWindowMask, 30);
 	
 	
 	

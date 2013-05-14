@@ -10,8 +10,8 @@
 #include "mainApp.h"
 #include "ofVectorMath.h"
 
-#include "ofxUI.h"
 
+bool	appStarted = false;
 bool	firstLoaded=false;
 
 int		myInt1;
@@ -22,11 +22,14 @@ bool	reset = false;
 
 float	myColors[4];
 
+mainApp::~mainApp() {
+};
 //--------------------------------------------------------------
 
 void mainApp::setup(){
-    
+    appStarted=true;
 	ofSetWindowShape(800, 700);
+    ofSetWindowPosition(100,800);
 	
 	///sinus buffer
 	float sines[514]={0,0.012268,0.024536,0.036804,0.049042,0.06131,0.073547,0.085785,0.097992,0.1102,0.12241,0.13455,0.1467,0.15884,0.17093,0.18301,0.19507,0.20709,0.21909,0.23105,0.24295,0.25485,0.26669,0.2785,0.29025,0.30197,0.31366,0.32529,0.33685,0.34839,0.35986,0.37128,0.38266,0.39395,0.40521,0.41641,0.42752,0.4386,0.44958,0.46051,0.47137,0.48215,0.49286,0.50351,0.51407,0.52457,0.53497,0.54529,0.55554,0.5657,0.57578,0.58575,0.59567,0.60547,0.6152,0.62482,0.63437,0.6438,0.65314,0.66238,0.67151,0.68057,0.68951,0.69833,0.70706,0.7157,0.72421,0.7326,0.74091,0.74908,0.75717,0.76514,0.77298,0.7807,0.7883,0.79581,0.80316,0.81042,0.81754,0.82455,0.83142,0.8382,0.84482,0.85132,0.8577,0.86392,0.87006,0.87604,0.88187,0.8876,0.89319,0.89862,0.90396,0.90912,0.91415,0.91907,0.92383,0.92847,0.93295,0.93729,0.9415,0.94556,0.94949,0.95325,0.95691,0.96039,0.96375,0.96692,0.97,0.9729,0.97565,0.97827,0.98074,0.98306,0.98523,0.98724,0.98914,0.99084,0.99243,0.99387,0.99515,0.99628,0.99725,0.99808,0.99875,0.99927,0.99966,0.99988,0.99997,0.99988,0.99966,0.99927,0.99875,0.99808,0.99725,0.99628,0.99515,0.99387,0.99243,0.99084,0.98914,0.98724,0.98523,0.98306,0.98074,0.97827,0.97565,0.9729,0.97,0.96692,0.96375,0.96039,0.95691,0.95325,0.94949,0.94556,0.9415,0.93729,0.93295,0.92847,0.92383,0.91907,0.91415,0.90912,0.90396,0.89862,0.89319,0.8876,0.88187,0.87604,0.87006,0.86392,0.8577,0.85132,0.84482,0.8382,0.83142,0.82455,0.81754,0.81042,0.80316,0.79581,0.7883,0.7807,0.77298,0.76514,0.75717,0.74908,0.74091,0.7326,0.72421,0.7157,0.70706,0.69833,0.68951,0.68057,0.67151,0.66238,0.65314,0.6438,0.63437,0.62482,0.6152,0.60547,0.59567,0.58575,0.57578,0.5657,0.55554,0.54529,0.53497,0.52457,0.51407,0.50351,0.49286,0.48215,0.47137,0.46051,0.44958,0.4386,0.42752,0.41641,0.40521,0.39395,0.38266,0.37128,0.35986,0.34839,0.33685,0.32529,0.31366,0.30197,0.29025,0.2785,0.26669,0.25485,0.24295,0.23105,0.21909,0.20709,0.19507,0.18301,0.17093,0.15884,0.1467,0.13455,0.12241,0.1102,0.097992,0.085785,0.073547,0.06131,0.049042,0.036804,0.024536,0.012268,0,-0.012268,-0.024536,-0.036804,-0.049042,-0.06131,-0.073547,-0.085785,-0.097992,-0.1102,-0.12241,-0.13455,-0.1467,-0.15884,-0.17093,-0.18301,-0.19507,-0.20709,-0.21909,-0.23105,-0.24295,-0.25485,-0.26669,-0.2785,-0.29025,-0.30197,-0.31366,-0.32529,-0.33685,-0.34839,-0.35986,-0.37128,-0.38266,-0.39395,-0.40521,-0.41641,-0.42752,-0.4386,-0.44958,-0.46051,-0.47137,-0.48215,-0.49286,-0.50351,-0.51407,-0.52457,-0.53497,-0.54529,-0.55554,-0.5657,-0.57578,-0.58575,-0.59567,-0.60547,-0.6152,-0.62482,-0.63437,-0.6438,-0.65314,-0.66238,-0.67151,-0.68057,-0.68951,-0.69833,-0.70706,-0.7157,-0.72421,-0.7326,-0.74091,-0.74908,-0.75717,-0.76514,-0.77298,-0.7807,-0.7883,-0.79581,-0.80316,-0.81042,-0.81754,-0.82455,-0.83142,-0.8382,-0.84482,-0.85132,-0.8577,-0.86392,-0.87006,-0.87604,-0.88187,-0.8876,-0.89319,-0.89862,-0.90396,-0.90912,-0.91415,-0.91907,-0.92383,-0.92847,-0.93295,-0.93729,-0.9415,-0.94556,-0.94949,-0.95325,-0.95691,-0.96039,-0.96375,-0.96692,-0.97,-0.9729,-0.97565,-0.97827,-0.98074,-0.98306,-0.98523,-0.98724,-0.98914,-0.99084,-0.99243,-0.99387,-0.99515,-0.99628,-0.99725,-0.99808,-0.99875,-0.99927,-0.99966,-0.99988,-0.99997,-0.99988,-0.99966,-0.99927,-0.99875,-0.99808,-0.99725,-0.99628,-0.99515,-0.99387,-0.99243,-0.99084,-0.98914,-0.98724,-0.98523,-0.98306,-0.98074,-0.97827,-0.97565,-0.9729,-0.97,-0.96692,-0.96375,-0.96039,-0.95691,-0.95325,-0.94949,-0.94556,-0.9415,-0.93729,-0.93295,-0.92847,-0.92383,-0.91907,-0.91415,-0.90912,-0.90396,-0.89862,-0.89319,-0.8876,-0.88187,-0.87604,-0.87006,-0.86392,-0.8577,-0.85132,-0.84482,-0.8382,-0.83142,-0.82455,-0.81754,-0.81042,-0.80316,-0.79581,-0.7883,-0.7807,-0.77298,-0.76514,-0.75717,-0.74908,-0.74091,-0.7326,-0.72421,-0.7157,-0.70706,-0.69833,-0.68951,-0.68057,-0.67151,-0.66238,-0.65314,-0.6438,-0.63437,-0.62482,-0.6152,-0.60547,-0.59567,-0.58575,-0.57578,-0.5657,-0.55554,-0.54529,-0.53497,-0.52457,-0.51407,-0.50351,-0.49286,-0.48215,-0.47137,-0.46051,-0.44958,-0.4386,-0.42752,-0.41641,-0.40521,-0.39395,-0.38266,-0.37128,-0.35986,-0.34839,-0.33685,-0.32529,-0.31366,-0.30197,-0.29025,-0.2785,-0.26669,-0.25485,-0.24295,-0.23105,-0.21909,-0.20709,-0.19507,-0.18301,-0.17093,-0.15884,-0.1467,-0.13455,-0.12241,-0.1102,-0.097992,-0.085785,-0.073547,-0.06131,-0.049042,-0.036804,-0.024536,-0.012268,0,0.012268
@@ -43,21 +46,14 @@ void mainApp::setup(){
 	ofSetFrameRate(30);
 	ofSetBackgroundAuto(false);
 	
-	maxHertz = 3513;
-	
-	spectrum = new SpectrumDrawer( 1, maxHertz );
+    maxHertz = 3513;
+    spectrum = new SpectrumDrawer( 1, maxHertz );
 	spectrum->loadImageSpectrum("../Resources/main.jpg");
 	
 	playerHead = new PlayerHead();
 	
 	isPlaying = false;  // i wait on hitting "p" to play
-	
-	
 	recording = false;
-	
-	
-    
-    mainApp::defineGui();
     
     
 	//microphone
@@ -244,32 +240,36 @@ void mainApp::openMusicFile(){
 	}
 }
 void mainApp::openFile(){
-	spectrum->pause();
-	// first, create a string that will hold the URL
-	string URL;
-	
-	// openFile(string& URL) returns 1 if a file was picked
-	// returns 0 when something went wrong or the user pressed 'cancel'
-	ofFileDialogResult result = ofSystemLoadDialog("Open File", false, "");
     
-    
-	if(result.bSuccess){
-		// now you can use the URL
-        URL = result.filePath;
-		output = "URL to open: \n "+URL;
-		string extension;
-		for(int i = URL.length()-3; i < URL.length(); i++)
-		{
-			extension+=URL[i];
-		}
-        if (extension == "mp3" or extension == "wav"){
-            loadMusic(URL);
-        }else{
-            spectrum->loadImageSpectrum(URL);
+    if(appStarted)
+    {
+        spectrum->pause();
+        // first, create a string that will hold the URL
+        string URL;
+        
+        // openFile(string& URL) returns 1 if a file was picked
+        // returns 0 when something went wrong or the user pressed 'cancel'
+        ofFileDialogResult result = ofSystemLoadDialog("Open File", false, "");
+        
+        
+        if(result.bSuccess){
+            // now you can use the URL
+            URL = result.filePath;
+            output = "URL to open: \n "+URL;
+            string extension;
+            for(int i = URL.length()-3; i < URL.length(); i++)
+            {
+                extension+=URL[i];
+            }
+            if (extension == "mp3" or extension == "wav"){
+                loadMusic(URL);
+            }else{
+                spectrum->loadImageSpectrum(URL);
+            }
+        }else {
+            output = "OPEN canceled. ";
         }
-	}else {
-		output = "OPEN canceled. ";
-	}
+    }
 	
 }
 void mainApp::keyPressed(int key)
@@ -333,6 +333,39 @@ void mainApp::keyPressed(int key)
 	
 	
 }
+void mainApp::play () {
+    if(spectrum->loadedMusicPlaying){
+        
+        spectrum->loadedMusicPlaying=false;
+        isPlaying = false;
+        recording=false;
+        
+        demoSound.stop();
+        spectrum->reloadTexture(2);
+        
+    }else if(!spectrum->playing) {
+        spectrum->play();
+        ofSoundStream2Start();
+        cout << "play";
+    }
+}
+
+void mainApp::stop () {
+    if(spectrum->loadedMusicPlaying){
+        
+        spectrum->loadedMusicPlaying=false;
+        isPlaying = false;
+        recording=false;
+        
+        demoSound.stop();
+        spectrum->reloadTexture(2);
+        
+    }else if (spectrum->playing) {
+        spectrum->pause();
+        ofSoundStream2Stop();
+        cout << "stop";
+    }
+}
 /*
  gui.addSlider("Speed", spectrum->speed, 0.0, 20.0);
  gui.addButton("Open Picture", openf);
@@ -350,36 +383,31 @@ void mainApp::keyPressed(int key)
  gui.show();
  */
 
-void mainApp::defineGui()
+void mainApp::setSpectrumSpeed(float speed)
 {
-    gui = new ofxUICanvas(10,585,780,100);
-    gui->setTheme(OFX_UI_THEME_REFREQ);
-    gui->addWidgetDown(new ofxUILabel("refreq 2.0", OFX_UI_FONT_LARGE));
-    gui->addImageButton("Open", "../Resources/open.png", false, 57, 25);
-    gui->addSpacer();
-    gui->addWidgetDown(new ofxUISlider(600,10,-5.0,10.0,1.0,"Speed"));
-    ofAddListener(gui->newGUIEvent, this, &mainApp::guiEvent);
-    gui->loadSettings("GUI/guiSettings.xml");
-}
-void mainApp::guiEvent(ofxUIEventArgs &e)
-{
-    string name = e.widget->getName();
-    
-    if(name == "Speed")
+    if(appStarted)
     {
-        ofxUISlider *slider = (ofxUISlider *) e.widget;
-        spectrum->speed = slider->getScaledValue();
+        spectrum->speed = speed;
     }
-    if(name == "Open")
+}
+void mainApp::setMinHz(float speed)
+{
+    if(appStarted)
     {
-        openFile();
+        spectrum->minHz = speed;
+    }
+}
+void mainApp::setMaxHz(float speed)
+{
+    if(appStarted)
+    {
+        spectrum->maxHz = speed;
     }
 }
 
-void mainApp::exit()
+void mainApp::close()
 {
 	spectrum->pause();
-    delete gui;
 }
 
 //--------------------------------------------------------------
