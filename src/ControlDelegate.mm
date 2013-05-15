@@ -40,10 +40,13 @@
 	mainApp *refreqApp = (mainApp*) ofxNSWindower::instance()->getAppPtr("refreq");
 	
     refreqApp->play();
+    
+    /*
     NSString *s = @"▌▌";
     
     //[sender setTitleFont:[NSFont fontWithName:@"Lucida Grande 11"]];
     [sender setTitle:(s)];
+     */
 }
 
 
