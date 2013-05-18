@@ -92,6 +92,7 @@ void mainApp::draw(){
 			spectrum->counter=0;
 		}
 	}
+    
 	
 	if(recording){
 		float avg_power = 1.0f;
@@ -150,7 +151,44 @@ void mainApp::draw(){
 void mainApp::audioRequested 	(float * output, int bufferSize, int nChannels){
 	//cout << "audioReq";
 	if(spectrum->playing){
-		
+        
+        
+		 //////IM TRYING TO USE FFT TO CONVERT MUSIC
+        int n = bufferSize;
+        vector<FFT::Complex> buf_complex(maxHertz);
+        for (int i = 0; i < maxHertz; ++i)
+            buf_complex[i] = amp[i];
+        
+        
+        
+        FFT dft(maxHertz );
+        
+        vector<FFT::Complex> frequencies = dft.transform(buf_complex);
+        
+        for (int k = 0; k < (n >> 1); ++k)
+        {
+            /*
+            
+            if (dft.getIntensity(frequencies[k]) > 100)
+            {
+                
+                cout << BIT  << "/n";
+                
+                output[k*nChannels] = dft.getIntensity(frequencies[k]);
+                output[k*nChannels + 1] = dft.getIntensity(frequencies[k]);
+            }
+             */
+            
+            
+            output[k*nChannels] = dft.getIntensity(frequencies[k]);
+            output[k*nChannels + 1] = dft.getIntensity(frequencies[k]);
+            outp[k] = output[k*nChannels];
+        }
+        
+        
+        ////////*OLD
+         /*
+        
 		for (int i = 0; i < bufferSize; i++){
 			
 			wave = 0.0;
@@ -171,10 +209,12 @@ void mainApp::audioRequested 	(float * output, int bufferSize, int nChannels){
 			if(wave>1.0) wave=1.0;
 			if(wave<-1.0) wave=-1.0;
 		
-			output[i*nChannels    ] = wave; /* You may end up with lots of outputs. add them here */
+			output[i*nChannels    ] = wave; // You may end up with lots of outputs. add them here
 			output[i*nChannels + 1] = wave;
 			outp[i] = wave;
 		}
+    */
+    
 	}else {
 		
 		for (int i = 0; i < bufferSize; i++){
@@ -239,35 +279,38 @@ void mainApp::openMusicFile(){
 		output = "OPEN canceled. ";
 	}
 }
-void mainApp::openFile(){
+void mainApp::openFile(string URL){
     
     if(appStarted)
     {
         spectrum->pause();
         // first, create a string that will hold the URL
-        string URL;
         
         // openFile(string& URL) returns 1 if a file was picked
         // returns 0 when something went wrong or the user pressed 'cancel'
-        ofFileDialogResult result = ofSystemLoadDialog("Open File", false, "");
-        
-        
-        if(result.bSuccess){
-            // now you can use the URL
-            URL = result.filePath;
-            output = "URL to open: \n "+URL;
-            string extension;
-            for(int i = URL.length()-3; i < URL.length(); i++)
-            {
-                extension+=URL[i];
+        if(URL==""){
+            ofFileDialogResult result = ofSystemLoadDialog("Open File", false, "");
+            
+            
+            if(result.bSuccess){
+                // now you can use the URL
+                URL = result.filePath;
+                output = "URL to open: \n "+URL;
+                string extension;
+                for(int i = URL.length()-3; i < URL.length(); i++)
+                {
+                    extension+=URL[i];
+                }
+                if (extension == "mp3" or extension == "wav"){
+                    loadMusic(URL);
+                }else{
+                    spectrum->loadImageSpectrum(URL);
+                }
+            }else {
+                output = "OPEN canceled. ";
             }
-            if (extension == "mp3" or extension == "wav"){
-                loadMusic(URL);
-            }else{
-                spectrum->loadImageSpectrum(URL);
-            }
-        }else {
-            output = "OPEN canceled. ";
+        }else{
+            loadMusic(URL);
         }
     }
 	
@@ -447,4 +490,7 @@ void mainApp::mouseReleased(int x, int y, int button)
 //--------------------------------------------------------------
 void mainApp::windowResized(int w, int h){
 	
+}
+void mainApp::dragEvent(ofDragInfo info) {
+    openFile(info.files[0]);
 }

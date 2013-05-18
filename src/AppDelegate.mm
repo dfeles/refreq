@@ -14,9 +14,10 @@ BOOL	isDrawingCustomFrame = YES;
 	//simple way...
 	ofxNSWindower::instance()->addWindow(new mainApp(), "refreq", NSTitledWindowMask|NSClosableWindowMask|NSMiniaturizableWindowMask|NSResizableWindowMask, 30);
 	
-    NSWindow *mainWindow = ofxNSWindower::instance()->getWindowPtr("refreq")->getWindow();
+    
+    mainWindow = ofxNSWindower::instance()->getWindowPtr("refreq")->getWindow();
 
-    NSView *themeView = [ofxNSWindower::instance()->getWindowPtr("refreq")->getView() superview];
+    themeView = [ofxNSWindower::instance()->getWindowPtr("refreq")->getView() superview];
     
     
     NSUInteger adj = 6;
@@ -37,8 +38,8 @@ BOOL	isDrawingCustomFrame = YES;
 	Method m1 = class_getInstanceMethod(class, @selector(drawRect:));
 	Method m2 = class_getInstanceMethod(class, @selector(drawRectOriginal:));
 	
-	method_exchangeImplementations(m1, m2);*/
-    
+	method_exchangeImplementations(m1, m2);
+    */
 }
 /*
 //// TODO LATER i want to paint black the top bar

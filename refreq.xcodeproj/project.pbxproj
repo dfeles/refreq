@@ -17,7 +17,6 @@
 		C700DCFF173E611500A9CF31 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = C700DCFE173E611500A9CF31 /* main.mm */; };
 		C700DD01173E615E00A9CF31 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = C700DD00173E615E00A9CF31 /* AppDelegate.mm */; };
 		C72A6C47173D5E1900228F3E /* open.png in Resources */ = {isa = PBXBuildFile; fileRef = C72A6C46173D5E1900228F3E /* open.png */; };
-		C73659B0173BF3C300A7BF20 /* fft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C73659A7173BF3C300A7BF20 /* fft.cpp */; };
 		C73659B2173BF3C300A7BF20 /* mainApp.mm in Sources */ = {isa = PBXBuildFile; fileRef = C73659AA173BF3C300A7BF20 /* mainApp.mm */; };
 		C73659B3173BF3C300A7BF20 /* PlayerHead.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C73659AC173BF3C300A7BF20 /* PlayerHead.cpp */; };
 		C73659B4173BF3C300A7BF20 /* SpectrumDrawer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C73659AE173BF3C300A7BF20 /* SpectrumDrawer.cpp */; };
@@ -27,6 +26,10 @@
 		C7365A3E173BF9C600A7BF20 /* main.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C7365A12173BF44B00A7BF20 /* main.jpg */; };
 		C7365A3F173BFCCB00A7BF20 /* din.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C7365A0A173BF44B00A7BF20 /* din.ttf */; };
 		C73F851A1742376600D5B319 /* ControlDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = C73F85191742376600D5B319 /* ControlDelegate.mm */; };
+		C79455121746B149005F833D /* fft.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C79455101746B149005F833D /* fft.cpp */; };
+		C79455251746B238005F833D /* License.txt in Resources */ = {isa = PBXBuildFile; fileRef = C79455161746B238005F833D /* License.txt */; };
+		C79455261746B238005F833D /* Readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = C79455171746B238005F833D /* Readme.txt */; };
+		C79455301746B5D0005F833D /* FFT2.cc in Sources */ = {isa = PBXBuildFile; fileRef = C794552E1746B5D0005F833D /* FFT2.cc */; };
 		C7D75EB8173F992F0020D7B1 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7D75EB7173F992E0020D7B1 /* MainMenu.xib */; };
 		C7DCF19117404F6C00894FBA /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C75A03D61740489B00D0933A /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -92,8 +95,6 @@
 		C700DD00173E615E00A9CF31 /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		C700DD02173E616700A9CF31 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C72A6C46173D5E1900228F3E /* open.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = open.png; sourceTree = "<group>"; };
-		C73659A7173BF3C300A7BF20 /* fft.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fft.cpp; sourceTree = "<group>"; };
-		C73659A8173BF3C300A7BF20 /* fft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fft.h; sourceTree = "<group>"; };
 		C73659AA173BF3C300A7BF20 /* mainApp.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = mainApp.mm; sourceTree = "<group>"; };
 		C73659AB173BF3C300A7BF20 /* mainApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mainApp.h; sourceTree = "<group>"; };
 		C73659AC173BF3C300A7BF20 /* PlayerHead.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerHead.cpp; sourceTree = "<group>"; };
@@ -141,6 +142,12 @@
 		C73F85181742376600D5B319 /* ControlDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ControlDelegate.h; sourceTree = "<group>"; };
 		C73F85191742376600D5B319 /* ControlDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ControlDelegate.mm; sourceTree = "<group>"; };
 		C75A03C71740489B00D0933A /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../of_v0.7.4_osx_release/libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = "<group>"; };
+		C79455101746B149005F833D /* fft.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fft.cpp; sourceTree = "<group>"; };
+		C79455111746B149005F833D /* fft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fft.h; sourceTree = "<group>"; };
+		C79455161746B238005F833D /* License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = License.txt; sourceTree = "<group>"; };
+		C79455171746B238005F833D /* Readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.txt; sourceTree = "<group>"; };
+		C794552E1746B5D0005F833D /* FFT2.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FFT2.cc; sourceTree = "<group>"; };
+		C794552F1746B5D0005F833D /* FFT2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFT2.h; sourceTree = "<group>"; };
 		C7D75EB7173F992E0020D7B1 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
 		E45BE9720E8CC7DD009D7055 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = /System/Library/Frameworks/ApplicationServices.framework; sourceTree = "<absolute>"; };
@@ -226,6 +233,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				C79455131746B238005F833D /* fft */,
 				C700DC0C173E405900A9CF31 /* ofxNSWindower */,
 				C73659B5173BF3CF00A7BF20 /* ofSoundStream2 */,
 				C73659B8173BF3CF00A7BF20 /* ofxFileDialogOSX */,
@@ -402,6 +410,18 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		C79455131746B238005F833D /* fft */ = {
+			isa = PBXGroup;
+			children = (
+				C794552E1746B5D0005F833D /* FFT2.cc */,
+				C794552F1746B5D0005F833D /* FFT2.h */,
+				C79455161746B238005F833D /* License.txt */,
+				C79455171746B238005F833D /* Readme.txt */,
+			);
+			name = fft;
+			path = src/addons/fft;
+			sourceTree = "<group>";
+		};
 		E45BE5980E8CC70C009D7055 /* frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -435,8 +455,8 @@
 				C700DD02173E616700A9CF31 /* AppDelegate.h */,
 				C73F85191742376600D5B319 /* ControlDelegate.mm */,
 				C73F85181742376600D5B319 /* ControlDelegate.h */,
-				C73659A7173BF3C300A7BF20 /* fft.cpp */,
-				C73659A8173BF3C300A7BF20 /* fft.h */,
+				C79455101746B149005F833D /* fft.cpp */,
+				C79455111746B149005F833D /* fft.h */,
 				C73659AC173BF3C300A7BF20 /* PlayerHead.cpp */,
 				C73659AD173BF3C300A7BF20 /* PlayerHead.h */,
 				C73659AE173BF3C300A7BF20 /* SpectrumDrawer.cpp */,
@@ -531,6 +551,8 @@
 				C72A6C47173D5E1900228F3E /* open.png in Resources */,
 				C700DCEA173E405A00A9CF31 /* readme.md in Resources */,
 				C7D75EB8173F992F0020D7B1 /* MainMenu.xib in Resources */,
+				C79455251746B238005F833D /* License.txt in Resources */,
+				C79455261746B238005F833D /* Readme.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -568,13 +590,14 @@
 				a9f6b9bcb9a36d1c504341ac3a9fa8aa /* tinyxml.cpp in Sources */,
 				528d24294afb24ac2eeff1afc590bac0 /* tinyxmlerror.cpp in Sources */,
 				ef0db92417b6dbf0507143b5addf7be2 /* tinyxmlparser.cpp in Sources */,
-				C73659B0173BF3C300A7BF20 /* fft.cpp in Sources */,
 				C73659B3173BF3C300A7BF20 /* PlayerHead.cpp in Sources */,
 				C73659B4173BF3C300A7BF20 /* SpectrumDrawer.cpp in Sources */,
 				C73659EF173BF3CF00A7BF20 /* ofSoundStream2.mm in Sources */,
 				C73659F0173BF3CF00A7BF20 /* ofxFileDialogOSX.cpp in Sources */,
 				C73659F1173BF3CF00A7BF20 /* ofxMSAInteractiveObject.cpp in Sources */,
 				C73F851A1742376600D5B319 /* ControlDelegate.mm in Sources */,
+				C79455121746B149005F833D /* fft.cpp in Sources */,
+				C79455301746B5D0005F833D /* FFT2.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -613,7 +636,7 @@
 					"-lpthread",
 					"-mtune=native",
 				);
-				SDKROOT = macosx;
+				SDKROOT = macosx10.7;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -651,7 +674,7 @@
 					"-lpthread",
 					"-mtune=native",
 				);
-				SDKROOT = macosx;
+				SDKROOT = macosx10.7;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

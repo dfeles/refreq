@@ -9,12 +9,16 @@
 #include "fft.h"
 #include <string.h>
 #include "ofxNSWindowApp.h"
+#include "FFT2.h"
 
 #define BUFFER_SIZE 8192
 
 #define SAMPLE_RATE 44100
 #define INITIAL_BUFFER_SIZE 512
 #define BIT 512
+
+#define PI 3.14159265
+#define EPSILON 0.000001
 
 //BIT defines the value, the many frequency, we will count 
 
@@ -45,6 +49,8 @@ public:
 	void mouseReleased(int x, int y, int button);
 	void windowResized(int w, int h);
     
+    void dragEvent(ofDragInfo info);
+    
     //init
     
 	void audioRequested 	(float * input, int bufferSize, int nChannels); /* output method */
@@ -52,7 +58,7 @@ public:
 	
 	void loadMusic(string target);
 	
-	void openFile();
+	void openFile(string URL="");
 	void openMusicFile();
     
     void stop();

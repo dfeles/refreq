@@ -4,8 +4,8 @@
 
 
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
-	NSWindow * window;
-    NSArray * values;
+	NSWindow *mainWindow;
+    NSView *themeView;
     
     NSButton * btnFeatured;
     
