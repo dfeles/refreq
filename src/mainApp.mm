@@ -152,43 +152,40 @@ void mainApp::audioRequested 	(float * output, int bufferSize, int nChannels){
 	//cout << "audioReq";
 	if(spectrum->playing){
         
-        
 		 //////IM TRYING TO USE FFT TO CONVERT MUSIC
-        int n = bufferSize;
-        vector<FFT::Complex> buf_complex(maxHertz);
-        for (int i = 0; i < maxHertz; ++i)
-            buf_complex[i] = amp[i];
+        int n = BIT;
+        vector<FFT::Complex> buf_complex(n);
+        
+        for (int i = 0; i < n; ++i)
+        {
+            //buf_complex[(n-i-1)*maxHertz / SAMPLE_RATE] = amp[i]/10.0;
+            cout << ((float)hertzScale[n - i -1]/(float)maxHertz * n - 1) << '\n';
+            buf_complex[(float)hertzScale[n - i -1]/100000 * n - 1] = amp[i]/10.0;
+            //buf_complex[i] = amp[i];
+        }
+        
+       // FFT dft(n);
         
         
+       // vector<FFT::Complex> buffer1 = dft.transform(buf_complex);
         
-        FFT dft(maxHertz );
+        FFT idft(n, true);
         
-        vector<FFT::Complex> frequencies = dft.transform(buf_complex);
+        
+        vector<FFT::Complex> buffer = idft.transform(buf_complex);
+        
         
         for (int k = 0; k < (n >> 1); ++k)
         {
-            /*
-            
-            if (dft.getIntensity(frequencies[k]) > 100)
-            {
-                
-                cout << BIT  << "/n";
-                
-                output[k*nChannels] = dft.getIntensity(frequencies[k]);
-                output[k*nChannels + 1] = dft.getIntensity(frequencies[k]);
-            }
-             */
-            
-            
-            output[k*nChannels] = dft.getIntensity(frequencies[k]);
-            output[k*nChannels + 1] = dft.getIntensity(frequencies[k]);
+            output[k*nChannels] = buffer[k].real();
+            output[k*nChannels + 1] = buffer[k].real();//idft.getIntensity(buffer[k]);//dft.getIntensity(frequencies[k]);
             outp[k] = output[k*nChannels];
         }
         
         
         ////////*OLD
-         /*
-        
+         
+        /*
 		for (int i = 0; i < bufferSize; i++){
 			
 			wave = 0.0;
@@ -213,7 +210,7 @@ void mainApp::audioRequested 	(float * output, int bufferSize, int nChannels){
 			output[i*nChannels + 1] = wave;
 			outp[i] = wave;
 		}
-    */
+*/
     
 	}else {
 		
