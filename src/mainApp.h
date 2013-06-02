@@ -6,10 +6,11 @@
 #include "SpectrumDrawer.h"
 #include "PlayerHead.h"
 #include "ofSoundStream2.h"
-#include "fft.h"
 #include <string.h>
 #include "ofxNSWindowApp.h"
+#include "fft.h"
 #include "FFT2.h"
+#include "minim-FFT.h"
 
 #define BUFFER_SIZE 8192
 

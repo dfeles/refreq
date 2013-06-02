@@ -16,7 +16,7 @@ bool	firstLoaded=false;
 
 int		myInt1;
 
-float	line = 0.5;
+float	line = 0;
 
 bool	reset = false;
 
@@ -27,6 +27,9 @@ mainApp::~mainApp() {
 //--------------------------------------------------------------
 
 void mainApp::setup(){
+
+    
+    
     appStarted=true;
 	ofSetWindowShape(800, 700);
     ofSetWindowPosition(100,800);
@@ -80,8 +83,6 @@ void mainApp::update(){
 
 //--------------------------------------------------------------
 void mainApp::draw(){
-	
-    
 	if(demoSound.isLoaded()){
 		if(firstLoaded){
 			firstLoaded=false;
@@ -146,56 +147,17 @@ void mainApp::draw(){
 	float width = (float)(ofGetWidth()) / bufferSize;
      
 }
-float volume = .3;
+float volume = .2;
 int Phases=0;
 //--------------------------------------------------------------
 void mainApp::audioRequested 	(float * output, int bufferSize, int nChannels){
 	//cout << "audioReq";
     
-   
+    
+    
 	if(spectrum->playing){
         
-		 //////IM TRYING TO USE FFT TO CONVERT MUSIC
-        int n = BIT;
-        vector<FFT::Complex> buf_complex(n);
-        
-        for (int i = 0; i < n; ++i)
-        {
-            //buf_complex[i*hertzScale[i] / SAMPLE_RATE] = amp[i];
-            buf_complex[i] = 0;
-        }
-        
-        buf_complex[50] = 1;
-        
-        //buf_complex[3] = 1;
-        
-       // vector<FFT::Complex> buffer1 = dft.transform(buf_complex);
-        
-        FFT idft(n, true);
-        
-        
-        vector<FFT::Complex> buffer = idft.transform(buf_complex);
-        
-        
-        
-        
-        for (int k = 0; k < (bufferSize >> 1); ++k)
-        {
-            int _k = k;//(k+Phases*bufferSize) % n;
-            
-            
-            output[k*nChannels] = buffer[_k].real() * volume;
-            output[k*nChannels + 1] = buffer[_k].real() * volume;
-            
-            
-            outp[k] = output[k*nChannels];
-            //outp[k] = output[k*nChannels];
-        }
-        Phases += 512./(44100.0/(hertzScale[n]));
-        
-        ////////*OLD
-        
-        /*
+		 
 		for (int i = 0; i < bufferSize; i++){
 			
 			wave = 0.0;
@@ -223,7 +185,7 @@ void mainApp::audioRequested 	(float * output, int bufferSize, int nChannels){
 			output[i*nChannels + 1] = wave;
 			outp[i] = wave;
 		}
-         */
+         
     
 	}else {
 		
@@ -342,6 +304,7 @@ void mainApp::keyPressed(int key)
 			 } 
 			 break;*/
 		case 'o':
+            
 			openFile();
 			break;
 		case 'm':

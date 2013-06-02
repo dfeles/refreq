@@ -320,10 +320,6 @@ float SpectrumDrawer::getAmp(float x, float y){
 		y=y-10;
 		
 		amp = getPixel(x, y);
-		//amp = pixels[(int(x*ratio2+player) % width)][int(y*ratio2)]/255.0;
-		//amp = pixels[(int(x+player) % width)][int(y) % height]/255.0;
-		//tomorites nelkul
-		//float amp = pixels[(int(x+player) % width)][(int) y]/255.0;
 		
 	}
 	return amp;
@@ -333,9 +329,15 @@ float SpectrumDrawer::getFreq(float y){
 	
 	if(height>0){
 		y-=10;
-		freq= (spectrumHeight-y+minHz)/spectrumHeight*(maxHz-minHz);
+        float yToFreq = (y/spectrumHeight)*maxHz;
+        
+        //TODO logarithmic scale
+        //freq = 1-(log(yToFreq)-log(minHz)) / (log(maxHz)-log(minHz));
+        
+        freq = 1-(yToFreq-minHz) / (maxHz-minHz);
+		//freq= (spectrumHeight-y+minHz)/spectrumHeight*(maxHz-minHz);
 	}
-	return freq;
+	return freq*maxHz;
 }
 void SpectrumDrawer::clear(){
 	for (int i=0; i<width; i++) {
