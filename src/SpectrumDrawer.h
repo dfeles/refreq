@@ -9,6 +9,8 @@
 #ifndef SPECTRUMDRAWER
 #define SPECTRUMDRAWER
 
+#define BIT 512
+
 #include "SpectrumDrawer.h"
 #include "ofMain.h"
 
@@ -47,7 +49,7 @@ public:
 	bool playing;
 	bool loadedMusicPlaying;
 	
-	float pixels[10000][513];
+	float pixels[10000][BIT-1];
 	float speed;
 	float player;
 	float ratio;

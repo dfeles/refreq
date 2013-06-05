@@ -328,16 +328,16 @@ float SpectrumDrawer::getFreq(float y){
 	float freq=0;
 	
 	if(height>0){
-		y-=10;
+		y-=9;
         float yToFreq = (y/spectrumHeight)*maxHz;
         
         //TODO logarithmic scale
-        //freq = 1-(log(yToFreq)-log(minHz)) / (log(maxHz)-log(minHz));
-        
-        freq = 1-(yToFreq-minHz) / (maxHz-minHz);
+        freq = 1-(log(yToFreq)-log(minHz)) / (log(maxHz)-log(minHz));
+        freq *= maxHz;
+        //freq = 1-(yToFreq-minHz) / (maxHz-minHz);
 		//freq= (spectrumHeight-y+minHz)/spectrumHeight*(maxHz-minHz);
 	}
-	return freq*maxHz;
+	return freq;
 }
 void SpectrumDrawer::clear(){
 	for (int i=0; i<width; i++) {

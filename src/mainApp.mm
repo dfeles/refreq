@@ -49,7 +49,7 @@ void mainApp::setup(){
 	ofSetFrameRate(30);
 	ofSetBackgroundAuto(false);
 	
-    maxHertz = 3513;
+    maxHertz = 8000;
     spectrum = new SpectrumDrawer( 1, maxHertz );
 	spectrum->loadImageSpectrum("../Resources/main.jpg");
 	
@@ -100,7 +100,7 @@ void mainApp::draw(){
 		float* newBuffer = new float[(int)BUFFER_SIZE];
 		myfft.powerSpectrum(0,(int)BUFFER_SIZE/2, left,BUFFER_SIZE,&magnitude[0],&phase2[0],&power[0],&avg_power);
 		for(int j=1; j < BUFFER_SIZE; j++) {
-			newBuffer[j] = log10(magnitude[j]/155.0+1);		
+			newBuffer[j] = magnitude[j]/155.0+1;
 		}
 		spectrum->addSpectrum(newBuffer);
 		 
@@ -217,7 +217,31 @@ void mainApp::audioReceived 	(float * input, int bufferSize, int nChannels){
 void mainApp::loadMusic(string target){
 	
 	//demoSound.loadSound("clocks.mp3");
-	demoSound.loadSound(target,true);
+    /*
+    if (musicLoader -> loadSound(target, true)) {
+        
+        void  *pointer1;
+        void  *pointer2;
+        unsigned int length1;
+        unsigned int length2;
+        
+        demoSound.lock(0,0, &pointer1, &pointer2, &length1, &length2);
+         
+    };
+    */
+    ofSoundPlayer musicPlayer;
+    
+    musicPlayer = *new ofSoundPlayer::ofSoundPlayer ();
+	if (musicPlayer.loadSound(target,true)) {
+        cout << "im loaded";
+        
+        void  *pointer1;
+        void  *pointer2;
+        unsigned int length1;
+        unsigned int length2;
+        player = ofPtr<OF_SOUND_PLAYER_TYPE>(new OF_SOUND_PLAYER_TYPE);
+        player = musicPlayer.getPlayer();
+    };
 	firstLoaded = true;
 	
 	// zero the buffers out

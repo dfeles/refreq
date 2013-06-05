@@ -10,7 +10,6 @@
 #include "ofxNSWindowApp.h"
 #include "fft.h"
 #include "FFT2.h"
-#include "minim-FFT.h"
 
 #define BUFFER_SIZE 8192
 
@@ -75,6 +74,8 @@ public:
 	
 	//music player
 	ofSoundPlayer      demoSound;
+    ofPtr<ofFmodSoundPlayer> musicPlayer;
+    ofFmodSoundPlayer player;
 	
 	bool            isPlaying;
 	bool			imageLoaded;
