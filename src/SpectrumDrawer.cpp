@@ -1,12 +1,3 @@
-/*
- *  SpectrumDrawer.cpp
- *  emptyExample
- *
- *  Created by Feles Daniel on 11/12/10.
- *  Copyright 2010 Kitchen Budapest. All rights reserved.
- *
- */
-
 #include "SpectrumDrawer.h"
 
 int spectrumHeight = 512;

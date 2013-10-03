@@ -16,8 +16,6 @@
 	
 	mainApp *refreqApp = (mainApp*) ofxNSWindower::instance()->getAppPtr("refreq");
 	
-	//grab the texfield value and convert to a C string
-	
 	refreqApp->openFile();
 }
 
@@ -40,13 +38,6 @@
 	mainApp *refreqApp = (mainApp*) ofxNSWindower::instance()->getAppPtr("refreq");
 	
     refreqApp->play();
-    
-    /*
-    NSString *s = @"▌▌";
-    
-    //[sender setTitleFont:[NSFont fontWithName:@"Lucida Grande 11"]];
-    [sender setTitle:(s)];
-     */
 }
 
 
@@ -55,7 +46,6 @@
 	
 	mainApp *refreqApp = (mainApp*) ofxNSWindower::instance()->getAppPtr("refreq");
 	
-	//refreqApp->setSpeed([sender floatValue]);
     refreqApp->stop();
     
 }

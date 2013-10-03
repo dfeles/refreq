@@ -1,12 +1,3 @@
-/* This is an example of how to integrate maximilain into openFrameworks, 
- including using audio received for input and audio requested for output.
- 
- 
- You can copy and paste this and use it as a starting example.
- 
- */
-
-
 #include "mainApp.h"
 #include "ofVectorMath.h"
 
@@ -63,11 +54,8 @@ void mainApp::setup(){
 	left = new float[BUFFER_SIZE];
 	right = new float[BUFFER_SIZE];
 	
-	//ofSoundStreamSetup(2,2,this,SAMPLE_RATE, INITIAL_BUFFER_SIZE, 4);
-	//ofSoundStreamStop();
-	ofSoundStream2Setup(2,2,this,SAMPLE_RATE, INITIAL_BUFFER_SIZE, 4); /* Call this last ! */
+	ofSoundStream2Setup(2,2,this,SAMPLE_RATE, INITIAL_BUFFER_SIZE, 4);
 	ofSoundStream2Stop();
-	//ofSoundStreamStart();
 }
 //--------------------------------------------------------------
 void mainApp::update(){
@@ -239,8 +227,8 @@ void mainApp::loadMusic(string target){
         void  *pointer2;
         unsigned int length1;
         unsigned int length2;
-        player = ofPtr<OF_SOUND_PLAYER_TYPE>(new OF_SOUND_PLAYER_TYPE);
-        player = musicPlayer.getPlayer();
+      //  player = ofPtr<OF_SOUND_PLAYER_TYPE>(new OF_SOUND_PLAYER_TYPE);
+      //  player = musicPlayer.getPlayer();
     };
 	firstLoaded = true;
 	

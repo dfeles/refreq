@@ -1,12 +1,3 @@
-/*
- *  PlayerHead.cpp
- *  emptyExample
- *
- *  Created by Feles Daniel on 11/13/10.
- *  Copyright 2010 Kitchen Budapest. All rights reserved.
- *
- */
-
 #include "PlayerHead.h"
 
 //--------------------------------------------------------------
